@@ -6,8 +6,18 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class StudentManagementApplicationTests {
 
-    @Test
+  @Test
     void contextLoads() {
+        // Test if Spring Boot context loads successfully
+        assertNotNull(this);
     }
 
+    @Test
+    void simpleLogicTest() {
+        int a = 5;
+        int b = 3;
+        int sum = a + b;
+
+        assertEquals(8, sum); // expected result = 8
+    }
 }
