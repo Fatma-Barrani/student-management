@@ -20,10 +20,6 @@ public class Department {
     private String phone;
     private String head; // chef de département
 
-    public Department(Long id, String name) {
-        this.idDepartment = id;
-        this.name = name;
-    }
     @OneToMany(mappedBy = "department")
     private List<Student> students;
 }
