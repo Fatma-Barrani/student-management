@@ -28,9 +28,11 @@
     </scm>
     <properties>
         <java.version>17</java.version>
-         <sonar.coverage.jacoco.xmlReportPaths>
-        ${project.build.directory}/site/jacoco/jacoco.xml
-         </sonar.coverage.jacoco.xmlReportPaths>
+          <!-- Configuration SonarQube -->
+        <sonar.projectKey>student-management</sonar.projectKey>
+        <sonar.projectName>student-management</sonar.projectName>
+        <sonar.sourceEncoding>UTF-8</sonar.sourceEncoding>
+        <sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
     </properties>
     <dependencies>
         <dependency>
@@ -79,30 +81,26 @@
                     </excludes>
                 </configuration>
             </plugin>
-            <!-- JaCoCo Plugin -->
-        <plugin>
-            <groupId>org.jacoco</groupId>
-            <artifactId>jacoco-maven-plugin</artifactId>
-            <version>0.8.11</version>
-            <executions>
-                <!-- Prepare agent before tests -->
-                <execution>
-                    <id>prepare-agent</id>
-                    <goals>
-                        <goal>prepare-agent</goal>
-                    </goals>
-                </execution>
-
-                <!-- Generate report after tests -->
-                <execution>
-                    <id>report</id>
-                    <phase>verify</phase>
-                    <goals>
-                        <goal>report</goal>
-                    </goals>
-                </execution>
-            </executions>
-        </plugin>
+                   <!-- ✅ Plugin JaCoCo pour la couverture -->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.11</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
